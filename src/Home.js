@@ -23,10 +23,14 @@ const Home= () => {
             },
         ])
           //console.log(blogs);
-
+          const handleDelete =(id) => {
+           const newBlogs = blogs.filter(blog => blog.id!== id);
+           setBlogs(newBlogs);
+          }
     return (
         <div className="home"> 
-        <BlogList blogs={blogs}title ="All Blogs!"/>
+        <BlogList blogs={blogs}title ="All Blogs!" handleDelete={handleDelete}/>
+        <BlogList blogs={blogs.filter((blog)=> blog.author==='hania')}title ="hania's blogs!"/>
           {/*{blogs.map((blog) => (
            <div className="blog-preview" key={blog.id}>
            <h2>{blog.title}</h2>
