@@ -3,6 +3,7 @@ import BlogList from "./BlogList";
 const Home= () => {
    const [blogs,setBlogs]= useState(null);
    const [isPending, setIsPending] =useState(true);
+   const[error,setError]=  useState (null);
      //[
       //{
         
@@ -35,26 +36,31 @@ const Home= () => {
             setTimeout(()=>{
               fetch('http://localhost:8000/blogs')
             .then(res =>{
+              //console.log(res);
+              if(!res.ok){
+                throw Error('could not fetch data that resource');
+              }
               return res.json();
             }).then(data => {
               console.log(data);
               setBlogs(data);
               setIsPending(false);
+              setError(null);
             })
-            })
-            {/*fetch('http://localhost:8000/blogs')
-            .then(res =>{
-              return res.json();
-            }).then(data => {
-              console.log(data);
-              setBlogs(data);
+            .catch((err)=>{
               setIsPending(false);
-            })*/}
+              setError(err.message);
+              //console.log(err.message);
+            })
+            })
+            
             //console.log('use effect ran');
             //console.log(blogs);
           },[1000]);
+
     return (
-        <div className="home"> 
+        <div className="home">
+          {error && <div>{error}</div>} 
         {isPending && <div>Loading...</div>}
          {blogs && <BlogList blogs={blogs}title ="All Blogs!"/>}
        {/*{blogs && <BlogList blogs={blogs}title ="All Blogs!" handleDelete= {handleDelete}/>}*/}
