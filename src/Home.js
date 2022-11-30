@@ -23,6 +23,7 @@ const Home= () => {
             },
         ])
           //console.log(blogs);
+           const [name,setName] = useState ('hania');
           const handleDelete =(id) => {
            const newBlogs = blogs.filter(blog => blog.id!== id);
            setBlogs(newBlogs);
@@ -31,11 +32,21 @@ const Home= () => {
           useEffect(() =>{
             console.log('use effect ran');
             console.log(blogs);
-          });
+          },[name]);
     return (
         <div className="home"> 
         <BlogList blogs={blogs}title ="All Blogs!" handleDelete={handleDelete}/>
         <BlogList blogs={blogs.filter((blog)=> blog.author==='hania')}title ="hania's blogs!"/>
+       <button
+               onClick={() => setName("noor")}
+               className="btn btn-outline-danger d-grid gap-2 col-6 mx-auto my-5"
+               type="button"
+             >
+               useEffect Dependency
+              </button>
+      
+       
+             <p>{name}</p>
           {/*{blogs.map((blog) => (
            <div className="blog-preview" key={blog.id}>
            <h2>{blog.title}</h2>
