@@ -6,7 +6,7 @@ const Home= () => {
         
             id: 1,
                title: " Tandori Chiken Tika ",
-               body: "The natural red colouring in my recipe comes from the paprika and chilli powder I use. To enhance the taste as well as the colour add a pinch of crushed saffron strands to the marinade. I prefer chicken thighs which are a more succulent cut though chicken breast works equally well.This is also the basic marinade that is commonly used to cook the chicken before making Butter Chicken (aka Chicken Tikka Masala).",
+               body: "The natural red colouring in my recipe comes from the paprika and chilli powder I use. To enhance the taste e colour add a pinch of crushed saffron strands to the marinade. I prefer chicken thighs which are a more succulent cut though chicken breast works equally well.This is also the basic maas well as thrinade that is commonly used to cook the chicken before making Butter Chicken (aka Chicken Tikka Masala).",
                author: "noor",
               },
               {
@@ -44,8 +44,6 @@ const Home= () => {
              >
                useEffect Dependency
               </button>
-      
-       
              <p>{name}</p>
           {/*{blogs.map((blog) => (
            <div className="blog-preview" key={blog.id}>
