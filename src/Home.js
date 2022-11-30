@@ -2,6 +2,7 @@ import React,{ useState,useEffect } from "react";
 import BlogList from "./BlogList";
 const Home= () => {
    const [blogs,setBlogs]= useState(null);
+   const [isPending, setIsPending] =useState(true);
      //[
       //{
         
@@ -31,18 +32,30 @@ const Home= () => {
           }*/}
 
           useEffect(() =>{
-            fetch('http://localhost:8000/blogs')
+            setTimeout(()=>{
+              fetch('http://localhost:8000/blogs')
             .then(res =>{
               return res.json();
             }).then(data => {
               console.log(data);
               setBlogs(data);
+              setIsPending(false);
             })
+            })
+            {/*fetch('http://localhost:8000/blogs')
+            .then(res =>{
+              return res.json();
+            }).then(data => {
+              console.log(data);
+              setBlogs(data);
+              setIsPending(false);
+            })*/}
             //console.log('use effect ran');
             //console.log(blogs);
-          },[]);
+          },[1000]);
     return (
         <div className="home"> 
+        {isPending && <div>Loading...</div>}
          {blogs && <BlogList blogs={blogs}title ="All Blogs!"/>}
        {/*{blogs && <BlogList blogs={blogs}title ="All Blogs!" handleDelete= {handleDelete}/>}*/}
         {/*<BlogList blogs={blogs.filter((blog)=> blog.author==='hania')}title ="hania's blogs!"/>
