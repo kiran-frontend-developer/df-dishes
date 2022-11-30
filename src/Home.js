@@ -1,7 +1,7 @@
 import React,{ useState } from "react";
 import Bloglist from "./Bloglist";
 const Home= () => {
-   const [blogs,setBlogs]= useState([
+   const [blogs,setblogs]= useState([
     {
         
             id: 1,
