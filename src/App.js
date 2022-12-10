@@ -1,11 +1,11 @@
 
 import Navbar from './Navbar';
 import Home from './Home';
-import { BrowserRouter as Kiran, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Create from './Create';
 function App() {
   return (
-    <Kiran>
+    <Router>
       <div className="App">
         <Navbar />
         <div className="content">
@@ -19,7 +19,7 @@ function App() {
           </Switch>
         </div>
       </div>
-    </Kiran>
+    </Router>
   );
 
 
