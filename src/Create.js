@@ -35,9 +35,7 @@ const Create = () => {
         onChange={(e)=> setTitle(e.target.value)}
         />
         <label>Blog body:</label>
-        <input 
-        type="text"
-        required
+        <textarea
         value={body}
         onChange={(e)=> setBody(e.target.value)}
         />
