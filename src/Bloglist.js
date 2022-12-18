@@ -10,7 +10,7 @@
          <h2>{title}</h2>
          {blogs.map((blog) => (
            <div className="blog-preview" key={blog.id}>
-           <Link to={'/blogs/${blog.id}'}className="text-decoration-none"><h2>{blog.title}</h2>
+           <Link to={`/blogs/${blog.id}`}className="text-decoration-none"><h2>{blog.title}</h2>
            <p>written by {blog.author}</p></Link>
            {/*<button
             onClick={() =>
