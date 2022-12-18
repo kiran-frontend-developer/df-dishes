@@ -3,11 +3,16 @@ const Create = () => {
   const[title,setTitle] = useState('');
   const[body,setBody] = useState('');
   const[author,setAuthor] = useState('noor');
+
+
+  const handleSubmit =(e) => {
+   e.preventDefault();
+  }
   return (
     <div className="create">
       <h2>Add a New Blog</h2>
       
-      <form>
+      <form onsubmit={handleSubmit}>
         <label>Blog title:</label>
         <input 
         type="text"
@@ -32,12 +37,12 @@ const Create = () => {
           <option value="hania">hania</option>
         </select>
         <button
-          onClick={() => {
+          //onClick={() => {
            // console.log("add blog is working");
-            alert("add blog");
-          }}
+            //alert("add blog");
+          //}}
           className="btn btn-outline-danger d-grid gap-2 col-6 mx-auto"
-          type="button"
+          type="submit"
         >
           Add Blog
         </button>
