@@ -3,16 +3,25 @@ const Create = () => {
   const[title,setTitle] = useState('');
   const[body,setBody] = useState('');
   const[author,setAuthor] = useState('noor');
-
-
+  const[isPending,setisPending]= useState(false);
   const handleSubmit =(e) => {
    e.preventDefault();
+   const blog = {title,body,author};
+   setisPending(true);
+   fetch('http://localhost:8000/blogs',{
+    method:'Post',
+    headers:{"Content-Type":"application/json"},
+    body: JSON.stringify(blog)
+   }).then(()=>{
+    console.log('new blog added');
+    setisPending(false);
+   })
   }
   return (
     <div className="create">
       <h2>Add a New Blog</h2>
       
-      <form onsubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <label>Blog title:</label>
         <input 
         type="text"
@@ -36,7 +45,7 @@ const Create = () => {
           <option value="aqsa">aqsa</option>
           <option value="hania">hania</option>
         </select>
-        <button
+        {!isPending &&<button
           //onClick={() => {
            // console.log("add blog is working");
             //alert("add blog");
@@ -45,7 +54,14 @@ const Create = () => {
           type="submit"
         >
           Add Blog
-        </button>
+        </button>}
+        {isPending &&<button
+          className="btn btn-outline-danger d-grid gap-2 col-6 mx-auto"
+          type="submit"
+          disabled
+        >
+          Adding Blog...
+        </button>}
         <p>{title}</p>
         <p>{body}</p>
         <p>{author}</p>
